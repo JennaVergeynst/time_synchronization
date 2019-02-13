@@ -1,4 +1,4 @@
-# Time synchronization
+# Time synchronisation
 
 Code for synchronising detections by use of synchronisation transmitters. 
 
