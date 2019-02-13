@@ -1,0 +1,5 @@
+.ipynb*
+461211_Sbase.pkl
+461211_Srec.pkl
+461211_synced.pkl
+__pycache__/
