@@ -1,6 +1,7 @@
 # Time synchronisation
 
-Code for synchronising detections by use of synchronisation transmitters. 
+Code for synchronising detections by use of synchronisation transmitters.   
+For questions, feel free to open an issue or contact the author!
 
 ## Preparation 
 
