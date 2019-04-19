@@ -33,6 +33,7 @@ def get_DTD(row, S_on_base, timecol='Time'):
         -----
         S_on_base : df with sync detections on base receiver
         row: row of df with sync detections on other receiver
+
         """
         try:
             correspoints = S_on_base[row.lower_lim:row.upper_lim]
@@ -56,6 +57,7 @@ def add_DTD(Sx_on_rec, Sx_on_base, tcol='Time', time_margin=100, check_period=No
     time_margin : time interval in which to search in the other receiver df
                   (Sx_on_rec) for corresponding time points
     check_period: str with date, month or year to check, default None
+
     Returns
     ------
     df with DTD column added
@@ -75,11 +77,17 @@ def add_DTD(Sx_on_rec, Sx_on_base, tcol='Time', time_margin=100, check_period=No
 
 def smooth_DTD(Sx_on_rec, outlier_lim=0.0001, window_size=6):
     """
+    Input
+    -----
     Sx_on_rec : df with detections of sync tag on other receiver with DTD added
     outlier_lim : if the difference between to adjacent DTDs is larger than
                   this value, it is omitted. Default 0.0001
     window_size : smooth the result to throw out also outliers if there are
                   multiple adjacent ones (and only first or last is thrown out)
+
+    Returns
+    -------
+    Sx_on_rec : original df with column 'DTD_smooth' added
     """
     Sx_on_rec['DTD_smooth'] = Sx_on_rec.DTD.copy()
     # put first and last value on nan to avoid border phenomena
