@@ -90,7 +90,7 @@ def smooth_DTD(Sx_on_rec, outlier_lim=0.0001, window_size=6):
 
     return Sx_on_rec
 
-def model_spline_part(DTD_S, ts, DTD_col='DTD_smooth', k=4, s=1e-3):
+def model_spline_part(DTD_S, ts, DTD_col='DTD_smooth', k=3, s=3e-4):
     """
     Function to model the spline (error on DTD due to receiver drift)
 
