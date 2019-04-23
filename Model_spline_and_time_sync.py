@@ -34,6 +34,8 @@ plt.show()
 # e.g. in the example, if you set window_size=1 with outlier_lim=0.005,
 # you will see the effect of insufficient smoothing
 # Zoom in on the figure to check smoothness! (especially at jumps!)
+# NOTE: if you smooth less here, the parameter s for modelling the spline
+# will probably have to be larger (in some case this is the best solution).
 Srec_on_rec = smooth_DTD(Srec_on_rec, outlier_lim=0.005, window_size=6)
 # If the DTD is already smooth enough, uncomment line below and comment line above:
 #Srec_on_rec['DTD_smooth'] = Srec_on_rec['DTD']
@@ -68,6 +70,17 @@ ys_Srec.rename(columns={'spline':'spline_Srec'}, inplace=True)
 
 ## Check if there is nice correspondance between spline and DTD (zoom in!!)
 # If not, play with the parameters of model_spline_part or smooth_DTD
+# For instance:
+#
+#   if overshoot of the spline at the breaks: you probably need to make the DTD smoother
+#   => decrease outlier_lim and/or increase window_size
+#   if discrepancy between spline and DTD line is too large
+#   => decrease window_size (can even be 1)
+#   if some part is not modelled: probably because it was lost by smoothing
+#   => increase outlier_lim
+#   if the spline is overpredicting (i.e. follows every tiniest variation in DTD_smooth)
+#   => increase s and/or decrease k
+
 fig,ax = plt.subplots()
 Srec_on_rec.plot(x='Time', y='DTD_smooth', ax=ax, c='green', grid=True, label='DTD_smooth')
 ys_Srec.plot(x='Time', y='spline_Srec', ax=ax, c='red', grid=True, alpha=0.5, label='spline')
@@ -138,11 +151,15 @@ plt.show()
 ### Resulting spline ###
 ### ---------------- ###
 
+# ! If you have to run this a second time, first run the read-in of
+# receiver_complete again (2nd cell of the notebook), otherwise you will get an error.
 receiver_complete = pd.merge(receiver_complete, ys_Srec[['Time', 'spline_Srec']], on='Time', how='left')
 receiver_complete = pd.merge(receiver_complete, ys_Sbase[['Time', 'spline_Sbase']], on='Time', how='left')
 
 receiver_complete['spline'] = (receiver_complete.spline_Srec+receiver_complete.spline_Sbase)/2
-
+receiver_complete = receiver_complete.set_index('Time')
+receiver_complete.spline = receiver_complete.spline.interpolate(method='time', limit_area='inside')
+receiver_complete = receiver_complete.reset_index(drop=False)
 
 fig,ax = plt.subplots()
 receiver_complete.spline_Srec.plot(ax=ax, c='orange', legend='spline Srec', label='spline Srec')
