@@ -40,9 +40,6 @@ def get_DTD(row, S_on_base, timecol='Time'):
             nearest_iloc = correspoints.index.get_loc(row[timecol], method='nearest')
             nearest_time = correspoints.reset_index().iloc[nearest_iloc][timecol]
             DTD = (row[timecol] - nearest_time).total_seconds()
-#             DTDs = pd.Series((row[timecol] - correspoints.index).total_seconds())
-#             index_of_smallest = DTDs.abs().idxmin()
-#             DTD = DTDs[index_of_smallest]
             return DTD
         except: # if there is no point in interval: IndexError, ValueError
             return None
