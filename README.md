@@ -3,6 +3,9 @@
 Code for synchronising detections by use of synchronisation transmitters.   
 For questions, feel free to open an issue or contact the author!
 
+## Note before you start
+This code is in python, but it is also entirely [available in R](https://github.com/elipickh/ReceiverArrays), thanks to Eliezer Pickholtz.
+
 ## Preparation 
 
 If possible, get your receiver time first linearly corrected, by comparing receiver clock at read-out with computer clock. For VPS, this can be done within the Fathom or VUE software.
