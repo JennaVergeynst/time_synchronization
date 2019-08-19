@@ -1,6 +1,7 @@
 # Time synchronisation
 
 Code for synchronising detections by use of synchronisation transmitters.   
+With thanks to Frank Smith, whose explanation of his time synchronisation method delivered helpful insights for developing this code.   
 For questions, feel free to open an issue or contact the author!
 
 ## Note before you start
