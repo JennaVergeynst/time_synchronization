@@ -4,6 +4,8 @@ Code for synchronising detections by use of synchronisation transmitters.
 With thanks to Frank Smith, whose explanation of his time synchronisation method delivered helpful insights for developing this code.   
 For questions, feel free to open an issue or contact the author!
 
+Cite as: Vergeynst, Jenna. (2019, November 13). JennaVergeynst/time_synchronization: Code for time synchronisation of an acoustic positioning system. Zenodo. http://doi.org/10.5281/zenodo.3540680
+
 ## Note before you start
 This code is in python, but it is also entirely [available in R](https://github.com/elipickh/ReceiverArrays), thanks to Eliezer Pickholtz.
 
