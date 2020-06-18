@@ -9,6 +9,8 @@ Cite as: Vergeynst, Jenna. (2019, November 13). JennaVergeynst/time_synchronizat
 ## Note before you start
 This code is in python, but it is also entirely [available in R](https://github.com/elipickh/ReceiverArrays), thanks to Eliezer Pickholtz.
 
+When you are planning to use YAPS: time synchronisation is now included in this package, making this work possibly redundant. Please check the step-by-step guide available via the [YAPS page](https://github.com/baktoft/yaps).
+
 ## Preparation 
 
 If possible, get your receiver time first linearly corrected, by comparing receiver clock at read-out with computer clock. For VPS, this can be done within the Fathom or VUE software.
